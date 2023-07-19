@@ -42,7 +42,6 @@ lat=lat.reshape(ni, nj)
 lat=np.rot90(lat.T)
 
 def lon360_to_lon180(lon360):
-
     # reduce the angle  
     lon180 =  lon360 % 360 
     
@@ -179,6 +178,7 @@ plt.rcParams['axes.grid'] = False
 # plt.rcParams['grid.color'] = "k"
 
 x0=302
+#! xs means the x's, the north-south profiles, so xs = 312 is the profile spanning south to north up the Qagssimiut lobe
 xs=np.arange(214,380) # range of x values on CARRA grid
 xs=np.arange(253,283)
 # xs=np.arange(283,450)
@@ -222,6 +222,7 @@ print(levs[0:n_levs-1])
 
 for x0 in xs:
     print(x0)
+    #! y0 to y1 is the north south extent of the profile referred to by the x's or xs
     y0=990 ; y1=ni-60
     
     levs=np.array(P[0:n_levs])
@@ -519,7 +520,7 @@ for x0 in xs:
                     
             if plt_map:
                 # -----------------------------------------------------------------------------  
-                fn='/Users/jason/Dropbox/AWS/GEUS_AWS_NRT_alerts/ancil/Greenland_Coastline/GRL_adm0.shp'
+                fn='./ancil/Greenland_Coastline/GRL_adm0.shp'
                 # fn='/Users/jason/Dropbox/Greenland map/coastline/Greenland_coast/Greenland_coast.shp'
                 coastline = gpd.read_file(fn)
                 coastline.crs = {'init' :'epsg:4326'}
